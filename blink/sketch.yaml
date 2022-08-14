@@ -1,0 +1,8 @@
+# https://arduino.github.io/arduino-cli/0.25/configuration/
+profiles:
+  blink:
+    fqbn: esp8266:esp8266:d1_mini
+    platforms:
+      - platform: esp8266:esp8266 (3.0.2)
+        platform_index_url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+    libraries:
