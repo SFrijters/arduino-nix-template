@@ -36,7 +36,7 @@
         '';
 
         devShellArduinoCLI =
-          pkgs.mkShell ({
+          pkgs.mkShell {
             name = "${name}-dev";
             packages = with pkgs; [
               arduino-cli  # For compiling and uploading the sketch
@@ -48,7 +48,7 @@
               ${arduinoShellHookPaths}
               echo "==> Storing arduino-cli data in $_ARDUINO_ROOT"
             '';
-          });
+          };
 
       in
         rec {
