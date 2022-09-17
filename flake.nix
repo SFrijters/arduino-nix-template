@@ -39,10 +39,10 @@
           pkgs.mkShell ({
             name = "${name}-dev";
             packages = with pkgs; [
-              arduino-cli
-              git
-              gnumake
-              picocom
+              arduino-cli  # For compiling and uploading the sketch
+              git          # For embedding a version hash into the sketch
+              gnumake      # To provide somewhat standardized commands to compile, upload, and monitor the sketch
+              picocom      # To monitor the serial output
             ];
             shellHook = ''
               ${arduinoShellHookPaths}
