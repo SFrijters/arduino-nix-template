@@ -12,7 +12,7 @@ $ make
 
 ## nix develop
 
-`nix develop` provides a semi-reproducible development environment via a [Nix flake](flake.nix): `arduino-cli` and other packages are pinned, but `arduino-cli` downloads its own packages. These are in turn pinned via the `sketch.yaml` file (available in `arduino-cli` [version 0.23 and above](https://github.com/arduino/arduino-cli/releases/tag/0.23.0)).
+`nix develop` provides a semi-reproducible development environment via a [Nix flake](flake.nix): `arduino-cli` and other system packages are pinned, but `arduino-cli` downloads its own libraries. These are in turn pinned via the `sketch.yaml` file (available in `arduino-cli` [version 0.23 and above](https://github.com/arduino/arduino-cli/releases/tag/0.23.0)).
 
 For NixOS: make sure the user is in the "dialout" group to access the serial port.
 
@@ -22,10 +22,12 @@ users.users.<user>.extraGroups = [ "dialout" ];
 
 ## arduino-cli
 
+Current version pinned via `nixpkgs`: 0.27.1.
+
 Use `make` for some predefined options to compile and upload the sketch.
 
 You may need to modify the options at the top of the [Makefile](blink/Makefile) to make the upload work.
 
-You may need to modify the options in [sketch.yaml](blink/sketch.yaml) to make it work on a different device (fqbn/platform). In its original state it's set up for the Wemos D1 Mini. See https://arduino.github.io/arduino-cli/0.25/sketch-project-file/ for details.
+You may need to modify the options in [sketch.yaml](blink/sketch.yaml) to make it work on a different device (fqbn/platform). In its original state it's set up for the Wemos D1 Mini. See https://arduino.github.io/arduino-cli/0.27/sketch-project-file/ for details.
 
 Hints to compile / upload from command line without the`Makefile`: https://create.arduino.cc/projecthub/B45i/getting-started-with-arduino-cli-7652a5 .
