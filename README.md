@@ -12,9 +12,9 @@ $ make
 
 ## nix develop
 
-`nix develop` provides a semi-reproducible development environment via a [Nix flake](flake.nix): `arduino-cli` and other system packages are pinned, but `arduino-cli` downloads its own libraries. These are in turn pinned via the `sketch.yaml` file (available in `arduino-cli` [version 0.23 and above](https://github.com/arduino/arduino-cli/releases/tag/0.23.0)).
+`nix develop` provides a semi-reproducible development environment via a [Nix flake](flake.nix): `arduino-cli` and other system packages are pinned via Nix, but `arduino-cli` still downloads its own libraries. These are in turn pinned via the `sketch.yaml` file.
 
-For NixOS: make sure the user is in the "dialout" group to access the serial port.
+For NixOS: make sure the user is in the `dialout` group to access the serial port.
 
 ```nix
 users.users.<user>.extraGroups = [ "dialout" ];
