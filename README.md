@@ -28,6 +28,6 @@ Use `make` for some predefined options to compile and upload the sketch.
 
 You may need to modify the options at the top of the [Makefile](blink/Makefile) to make the upload work.
 
-You may need to modify the options in [sketch.yaml](blink/sketch.yaml) to make it work on a different device (fqbn/platform). In its original state it's set up for the Wemos D1 Mini. See https://arduino.github.io/arduino-cli/0.27/sketch-project-file/ for details.
+You may need to modify the options in [sketch.yaml](blink/sketch.yaml) to make it work on a different device (fqbn/platform). In its original state it's set up for the Wemos D1 Mini.
 
 Hints to compile / upload from command line without the`Makefile`: https://create.arduino.cc/projecthub/B45i/getting-started-with-arduino-cli-7652a5 .
