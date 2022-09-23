@@ -46,7 +46,8 @@
             ];
             shellHook = ''
               ${arduinoShellHookPaths}
-              echo "==> Storing arduino-cli data in $_ARDUINO_ROOT"
+              echo "==> Using arduino-cli version $(arduino-cli version)"
+              echo "    Storing arduino-cli data for this project in '$_ARDUINO_ROOT'"
             '';
           };
 
