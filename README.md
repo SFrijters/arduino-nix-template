@@ -6,13 +6,13 @@ This is a template for building reproducible Arduino sketches with the help of [
 
 ```console
 $ nix develop
-$ cd blink
-$ make
+$ make -C blink compile
+$ make -C blink upload
 ```
 
 ## nix develop
 
-`nix develop` provides a semi-reproducible development environment via a [Nix flake](flake.nix): `arduino-cli` and other system packages are pinned via Nix, but `arduino-cli` still downloads its own libraries. These are in turn pinned via the `sketch.yaml` file.
+`nix develop` provides a reproducible development environment via a [Nix flake](flake.nix): `arduino-cli` and other system packages are pinned via Nix, but `arduino-cli` still downloads its own libraries. These are in turn pinned via the `sketch.yaml` file.
 
 For NixOS: make sure the user is in the `dialout` group to access the serial port.
 
