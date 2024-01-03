@@ -1,6 +1,6 @@
 SHELL=/usr/bin/env bash
 SERIAL=/dev/ttyUSB0  # This may need to be changed, based on the output of `arduino-cli board list`.
-BAUDRATE=9600  # This should be in sync with whatever you set in the sketch via `Serial.begin(xxx);` (if you set it at all).
+BAUDRATE=115200  # This should be in sync with whatever you set in the sketch via `Serial.begin(xxx);` (if you set it at all).
 PROFILE=blink  # This references the profile name in sketch.yaml .
 
 .PHONY: all compile upload monitor
