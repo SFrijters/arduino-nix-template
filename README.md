@@ -1,5 +1,7 @@
 # Arduino sketches with Nix
 
+[![Compilation test](https://github.com/SFrijters/arduino-nix-template/actions/workflows/compile-check-blink.yml/badge.svg)](https://github.com/SFrijters/arduino-nix-template/actions/workflows/compile-check-blink.yml)
+
 This is a template for building reproducible Arduino sketches with the help of [Nix](https://nixos.org/download.html), with [flakes enabled](https://github.com/mschwaig/howto-install-nix-with-flake-support).
 
 ## Quickstart
