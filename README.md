@@ -32,7 +32,7 @@ You may need to modify the options at the top of the [Makefile](blink/Makefile) 
 
 You may need to modify the options in [sketch.yaml](blink/sketch.yaml) to make it work on a different device (fqbn/platform). In its original state it's set up for the Wemos D1 Mini.
 
-Hints to compile / upload from command line without the`Makefile`: https://arduino.github.io/arduino-cli/0.35/getting-started/ .
+Hints to compile / upload from command line without the `Makefile`: https://arduino.github.io/arduino-cli/0.35/getting-started/ .
 
 ## Cache directory
 
