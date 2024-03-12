@@ -24,7 +24,7 @@ users.users.<user>.extraGroups = [ "dialout" ];
 
 ## arduino-cli
 
-Current version pinned via `nixpkgs`: 0.35.1.
+Current version pinned via `nixpkgs`: 0.35.3.
 
 Use `make` for some predefined options to compile and upload the sketch.
 
