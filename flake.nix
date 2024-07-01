@@ -23,7 +23,7 @@
 
         # The variables starting with underscores are custom,
         # the ones starting with ARDUINO are used by arduino-cli.
-        # See https://arduino.github.io/arduino-cli/0.35/configuration/ .
+        # See https://arduino.github.io/arduino-cli/1.0/configuration/ .
 
         # Store everything that arduino-cli downloads in a directory
         # reserved for this project, and following the XDG specification,
