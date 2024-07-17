@@ -53,9 +53,9 @@
         devShellArduinoCLI = pkgs.mkShell {
           name = "${name}-dev";
           packages = with pkgs; [
-            # To  compile and upload the sketch
+            # To compile and upload the sketch
             arduino-cli
-            # To  embed a version hash into the sketch
+            # To embed a version hash into the sketch
             git
             # To provide somewhat standardized commands to compile, upload, and monitor the sketch
             gnumake
