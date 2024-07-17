@@ -6,20 +6,22 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachSystem [ "x86_64-linux" ] (
+      system:
       let
         name = "blink";
 
-        pkgs = import nixpkgs {
-          inherit system;
-        };
+        pkgs = import nixpkgs { inherit system; };
 
         python = pkgs.python3;
 
-        pythonWithExtras = python.buildEnv.override {
-          extraLibs = [ ];
-        };
+        pythonWithExtras = python.buildEnv.override { extraLibs = [ ]; };
 
         # The variables starting with underscores are custom,
         # the ones starting with ARDUINO are used by arduino-cli.
@@ -51,11 +53,11 @@
         devShellArduinoCLI = pkgs.mkShell {
           name = "${name}-dev";
           packages = with pkgs; [
-            arduino-cli       # For compiling and uploading the sketch
-            git               # For embedding a version hash into the sketch
-            gnumake           # To provide somewhat standardized commands to compile, upload, and monitor the sketch
-            picocom           # To monitor the serial output
-            pythonWithExtras  # So that the python3 wrapper of the esp8266 downloaded code can find a working python interpreter on the path
+            arduino-cli # For compiling and uploading the sketch
+            git # For embedding a version hash into the sketch
+            gnumake # To provide somewhat standardized commands to compile, upload, and monitor the sketch
+            picocom # To monitor the serial output
+            pythonWithExtras # So that the python3 wrapper of the esp8266 downloaded code can find a working python interpreter on the path
           ];
           shellHook = ''
             ${arduinoShellHookPaths}
@@ -65,17 +67,15 @@
         };
 
       in
-        rec {
-          devShells = {
-            inherit
-              devShellArduinoCLI
-            ;
-          };
+      rec {
+        devShells = {
+          inherit devShellArduinoCLI;
+        };
 
-          # Development shell spawned by `nix develop`
-          devShells.default = devShellArduinoCLI;
+        # Development shell spawned by `nix develop`
+        devShells.default = devShellArduinoCLI;
 
-          formatter = pkgs.nixfmt-rfc-style;
-        }
+        formatter = pkgs.nixfmt-rfc-style;
+      }
     );
 }
