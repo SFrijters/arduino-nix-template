@@ -53,11 +53,16 @@
         devShellArduinoCLI = pkgs.mkShell {
           name = "${name}-dev";
           packages = with pkgs; [
-            arduino-cli # For compiling and uploading the sketch
-            git # For embedding a version hash into the sketch
-            gnumake # To provide somewhat standardized commands to compile, upload, and monitor the sketch
-            picocom # To monitor the serial output
-            pythonWithExtras # So that the python3 wrapper of the esp8266 downloaded code can find a working python interpreter on the path
+            # To  compile and upload the sketch
+            arduino-cli
+            # To  embed a version hash into the sketch
+            git
+            # To provide somewhat standardized commands to compile, upload, and monitor the sketch
+            gnumake
+            # To monitor the serial output
+            picocom
+            # So that the python3 wrapper of the esp8266 downloaded code can find a working python interpreter on the path
+            pythonWithExtras
           ];
           shellHook = ''
             ${arduinoShellHookPaths}
