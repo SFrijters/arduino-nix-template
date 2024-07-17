@@ -72,7 +72,7 @@
         };
 
       in
-      rec {
+      {
         devShells = {
           inherit devShellArduinoCLI;
         };
