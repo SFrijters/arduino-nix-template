@@ -8,13 +8,37 @@ on:
       - 'README.md'
 jobs:
   nix-flake-check:
-    runs-on: ubuntu-22.04  # Work around https://github.com/containers/bubblewrap/issues/632
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: cachix/install-nix-action@v29
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
     - uses: DeterminateSystems/magic-nix-cache-action@v8
+
+    - name: AppArmor fixes
+      # Work around https://github.com/containers/bubblewrap/issues/632
+      # Inspiration from https://github.com/chainguard-dev/melange/issues/1508#issue-2536640978
+      run: |
+        # Get the path to arduino-cli wrapper script that the devshell uses (ignore the user output for the devshell by using tail)
+        arduino_cli_path="$(nix develop --command which arduino-cli | tail -n1)"
+        # Get the path to the bwrap executable that the arduino-cli wrapper uses by grepping for the command inside the wrapper script
+        bwrap_path="$(grep "/bwrap" "${arduino_cli_path}")"
+
+        # Write an AppArmor config file that gives 'unconfined' permissions to the bwrap executable
+        cat << EOF | sudo tee /etc/apparmor.d/local-bwrap
+        abi <abi/4.0>,
+        include <tunables/global>
+
+        profile local-bwrap ${bwrap_path} flags=(unconfined) {
+          userns,
+
+          # Site-specific additions and overrides. See local/README for details.
+          include if exists <local/bwrap>
+        }
+        EOF
+        # Reload the AppArmor config
+        sudo systemctl reload apparmor
 
     - name: Compile test
       run: |
