@@ -1,4 +1,4 @@
-name: "compile-check-blink"
+name: "Compile check blink"
 on:
   pull_request:
     paths-ignore:
@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - 'README.md'
 jobs:
-  nix-flake-check:
+  compile-check-blink:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
