@@ -20,8 +20,8 @@ jobs:
       # Work around https://github.com/containers/bubblewrap/issues/632
       # Inspiration from https://github.com/chainguard-dev/melange/issues/1508#issue-2536640978
       run: |
-        # Get the path to arduino-cli wrapper script that the devshell uses (ignore the user output for the devshell by using tail)
-        arduino_cli_path="$(nix develop --command which arduino-cli | tail -n1)"
+        # Get the path to arduino-cli wrapper script that the devshell uses
+        arduino_cli_path="$(nix develop --command which arduino-cli)"
         # Get the path to the bwrap executable that the arduino-cli wrapper uses by grepping for the command inside the wrapper script
         bwrap_path="$(grep "/bwrap" "${arduino_cli_path}")"
 
