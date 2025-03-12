@@ -1,4 +1,4 @@
-# https://arduino.github.io/arduino-cli/1.1/sketch-project-file/
+# https://arduino.github.io/arduino-cli/1.2/sketch-project-file/
 profiles:
   blink:
     fqbn: esp8266:esp8266:d1_mini
