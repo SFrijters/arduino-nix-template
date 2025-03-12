@@ -80,7 +80,7 @@
         # Development shell spawned by `nix develop`
         devShells.default = devShellArduinoCLI;
 
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs.nixfmt-tree;
       }
     );
 }
