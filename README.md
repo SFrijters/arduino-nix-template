@@ -1,3 +1,5 @@
+**The method below still works, but https://github.com/bouk/arduino-nix is a way to offload more responsibility to Nix, and I'm migrating my own projects to use that instead.**
+
 # Arduino sketches with Nix
 
 [![Compile check blink](https://github.com/SFrijters/arduino-nix-template/actions/workflows/compile-check-blink.yml/badge.svg)](https://github.com/SFrijters/arduino-nix-template/actions/workflows/compile-check-blink.yml)
